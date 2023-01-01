@@ -1,0 +1,84 @@
+.avatar
+  {
+    padding-right: 15px
+  }
+
+.container
+  {
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+  }
+
+.content
+  {
+    background-color: hsl(215, 32%, 27%);
+    width: 300px;
+    height: 505px;
+    margin: 150px auto 150px auto;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    box-shadow: 15px 15px 15px hsl(217, 54%, 11%);
+
+  }
+
+.clock
+  {
+    display: inline;
+    padding-left: 40px;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+.equilibrium
+  {
+    display: block;
+    position: relative;
+    left: 25px;
+    top: 20px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+
+  }
+
+.equi-text
+  {
+    font-size: 1.2rem;
+    color: hsl(0, 0%, 100%);
+  }
+
+.ethereum
+  {
+    display: inline;
+    padding-left: 20px;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+.eth-text
+  {
+    color: Cyan;
+  }
+
+.text
+  {
+    color: hsl(215, 51%, 70%);
+  }
+
+.name
+  {
+    color: hsl(0, 0%, 100%);
+  }
+/*********************************end of classes************************/
+body{
+  background-color: hsl(216, 50%, 16%);
+}
+
+p{
+  padding-left: 25px;
+  padding-right: 10px;
+}
