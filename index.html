@@ -1,0 +1,269 @@
+<!-- steps to take - 
+1. initiate the input holders according to the requirement
+2. add required constraints to them
+3. make the required calculations and connect it to the submit button
+4. display the results in years , months, days
+5. Add CSS and Bootstrap and style it -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Age Calculator</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: hsl(0, 0%, 94%);
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .float-container {
+      width: 40%;
+      margin-top: 9%;
+      background-color: white;
+      padding: 2% 3% 3% 2%;
+      border-bottom-right-radius: 40%;
+    }
+
+    .float-child {
+      width: 100px; 
+      float:left; 
+      height:100px; 
+      margin:10px;
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 767px) {
+      .float-container {
+        width: 90%;
+        height: auto;
+      }
+
+    .float-child {
+      width: 50px; 
+      float:left; 
+      height:50px; 
+      margin:35px;
+      margin-bottom: 40px;
+    }
+
+    .input-box:hover {
+      border-color: blueviolet;
+    }
+
+    .input-box {
+      width: 50px; 
+      height: 20px;
+      border-radius: 10px;
+    }
+  }
+
+    .input-box {
+      width: 105px; 
+      height: 50px;
+      border-radius: 10px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .input-box::placeholder {
+      color: grey;
+      opacity: 2;
+      font-weight: bold;
+      text-align: center;
+      font-size: 1.2rem;
+    }
+
+    .float-child-button {
+    display: flex;
+    align-items: center;
+    height: 20px;
+    clear: both;
+  }
+
+  .button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: blueviolet;
+    border: none;
+  }
+
+  .button:hover {
+    background-color: black;
+  }
+
+  .button img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .float-child-button hr {
+    flex-grow: 1;
+    margin: 0;
+  }
+
+  .container {
+    display: flex;
+  }
+
+  .slanted-line {
+    width: 50px;
+    height: 10px;
+    background-color: blueviolet;
+    position: relative;
+    transform: skew(-20deg);
+    margin-bottom: 20px;
+    margin-top: 10%;
+    margin-right: 2%;
+  }
+
+  .answer {
+    margin: 0 2% 0 2%;
+    font-size: 4rem;
+  }
+
+  .error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  </style>
+
+</head>
+<body>
+  <div class="container-fluid float-container">
+    <form action="/" method="post">
+      <div class="input-div">
+        <div class="inputdate float-child">
+          <label for="birthday">Day</label> <br>
+          <input class="input-box" type="number" min="1" max="31" id="day" name="day" placeholder="DD">
+          <div class="error-message" id="day-error"></div>
+        </div>
+        <div class="inputdate float-child">
+          <label for="birthday">Month</label> <br>
+          <input class="input-box"  type="number" min="1" max="12" id="month" name="month" placeholder="MM">
+          <div class="error-message" id="month-error"></div>
+        </div>
+        <div class="inputdate float-child">
+          <label for="birthday">Year</label> <br>
+          <input class="input-box"  type="number" min="1500" max="2023" id="year" name="year" placeholder="YYYY">
+          <div class="error-message" id="year-error"></div>
+        </div>
+      </div>
+       <br> <br> <br>
+      <div  class="float-child-button">
+        <hr>
+        <button type="submit" name="submit" class="btn btn-lg button">
+          <img src="images/icon-arrow.svg" alt="Button Icon" />
+        </button>        
+      </div>      
+    </form>
+
+    <div class="container">
+      <div class="slanted-line"></div>
+      <div class="slanted-line"></div>
+      <div class="answer"><strong><strong>years</strong></strong></div>
+  </div>
+  <div class="container">
+    <div class="slanted-line"></div>
+    <div class="slanted-line"></div>
+    <div class="answer"><strong><strong>months</strong></strong></div>
+</div>
+<div class="container">
+  <div class="slanted-line"></div>
+  <div class="slanted-line"></div>
+  <div class="answer"><strong><strong>days</strong></strong></div>
+</div>
+
+</div>
+  
+  <script>
+  const input = document.getElementById('day');
+  const error = document.getElementById('day-error');
+
+  input.addEventListener('input', function() {
+    const value = parseInt(input.value, 10);
+    const isValid = value >= parseInt(input.min, 10) && value <= parseInt(input.max, 10);
+
+    input.classList.toggle('invalid', !isValid);
+    error.style.display = isValid ? 'none' : 'block';
+    error.textContent = isValid ? '' : 'Invalid input';
+  });
+
+  const monthinput = document.getElementById('month');
+  const monthError = document.getElementById('month-error');
+  const yearinput = document.getElementById('year');
+  const yearError = document.getElementById('year-error');
+
+  monthinput.addEventListener('input', validateMonth);
+  yearinput.addEventListener('input', validateYear);
+
+  function validateMonth() {
+    const value = parseInt(monthinput.value, 10);
+    const isValid = value >= parseInt(monthinput.min, 10) && value <= parseInt(monthinput.max, 10);
+
+    monthinput.classList.toggle('invalid', !isValid);
+    monthError.style.display = isValid ? 'none' : 'block';
+    monthError.textContent = isValid ? '' : 'Invalid month';
+  }
+
+  function validateYear() {
+    const value = parseInt(yearinput.value, 10);
+    const isValid = value >= parseInt(yearinput.min, 10) && value <= parseInt(yearinput.max, 10);
+
+    yearinput.classList.toggle('invalid', !isValid);
+    yearError.style.display = isValid ? 'none' : 'block';
+    yearError.textContent = isValid ? '' : 'Invalid year';
+  }
+
+    // Preserve input values and change button color after form submission
+    const ageForm = document.getElementById("ageForm");
+    const dayInput = document.getElementById("day");
+    const monthInput = document.getElementById("month");
+    const yearInput = document.getElementById("year");
+    const submitButton = document.getElementById("submitButton");
+
+    ageForm.addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent the form from submitting normally
+      const formData = new FormData(this);
+
+      fetch("/", {
+        method: "POST",
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        const { years, months, days } = data;
+        dayInput.value = formData.get("day");
+        monthInput.value = formData.get("month");
+        yearInput.value = formData.get("year");
+        submitButton.style.backgroundColor = "green";
+        
+        const resultDiv = document.getElementById("results");
+        resultDiv.innerHTML = `
+          <h1>Age Calculator Result</h1>
+          <p>${years} years</p>
+          <p>${months} months</p>
+          <p>${days} days</p>
+        `;
+      })
+      .catch(error => {
+        console.error(error);
+        document.getElementById("results").innerHTML = "An error occurred.";
+      });
+    });
+  </script>
+</body>
+</html>
